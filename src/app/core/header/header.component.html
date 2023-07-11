@@ -1,5 +1,18 @@
 <div class="d-flex p-2 main-header-container">
-    <div class="navigation-links p-1">
-        
+  <div class="navigation-links p-1 d-flex">
+    <img src="/src/assets/images/logo.png" />
+    <div
+      class="navigation-link active text-uppercase"
+      [routerLink]="['']"
+      [routerLinkActive]="['active']"
+    >
+      home
     </div>
+    <div class="navigation-link active text-uppercase">tv show</div>
+    <div class="navigation-link active text-uppercase">movies</div>
+    <div class="navigation-link active text-uppercase">new</div>
+  </div>
+  <div class="navigation-search p1 d-flex">
+    <input type="text" />
+  </div>
 </div>
