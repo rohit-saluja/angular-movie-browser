@@ -12,4 +12,25 @@
       color: #ffffff;
     }
   }
+  .navigation-search {
+    .material-icons-outlined {
+      color: #ffffff;
+    }
+    .search-input {
+      background-color: #3b567d;
+      input {
+        background-color: #3b567d;
+        outline: none;
+        border: none;
+        &:focus,
+        &:focus-visible {
+          outline: none;
+          border: none;
+        }
+        &:placeholder {
+          color: #a2b3cd;
+        }
+      }
+    }
+  }
 }
