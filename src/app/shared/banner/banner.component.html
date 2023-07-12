@@ -14,7 +14,7 @@
       <div class="genere-heading text-uppercase">generes</div>
       <div class="genere-label text-white">Romance, Drama</div>
     </div>
-    <div class="buttons-section d-flex gap-2">
+    <div class="buttons-section d-flex gap-2 mb-2">
       <span
         class="d-flex align-items-center justify-content-center p-3 rounded-pill text-white button-watch"
         role="button"
@@ -30,12 +30,12 @@
         <span class="material-symbols-outlined"> add </span>
       </span>
     </div>
-    <div class="imdb-section d-flex gap-2">
+    <div class="imdb-section d-flex gap-2 align-items-center">
       <img src="assets/images/imdb-large-icon.png" />
       <span class="imdb-text-count"></span>
-      <div class="ua rounded border-white p-1 text-white">U/A</div>
-      <div class="ua rounded border-white p-1 text-white">4K</div>
-      <div class="year">2023</div>
+      <div class="ua rounded border border-white text-white">U/A</div>
+      <div class="ua rounded border border-white text-white">4K</div>
+      <div class="year">{{ moment().year() }}</div>
     </div>
   </div>
 </div>
