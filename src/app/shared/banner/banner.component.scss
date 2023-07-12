@@ -1,8 +1,28 @@
 .banner-container {
   height: 500px;
+  img {
+    top: -244px;
+  }
   .banner-content {
     top: 100px;
     left: 100px;
-    color:#ffffff;
+    color: #ffffff;
+    width: 510px;
+    .header-title {
+      font-size: 40px;
+      font-weight: 1000;
+    }
+    .genere {
+      font-size: 18px;
+      color: var(--genere-red);
+    }
+    .buttons-section {
+      .button-watch {
+        background-color: var(--dark-purple);
+      }
+      .button-mylist {
+        background-color: var(--dark-grey);
+      }
+    }
   }
 }
