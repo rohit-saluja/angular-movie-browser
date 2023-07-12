@@ -24,5 +24,15 @@
         background-color: var(--dark-grey);
       }
     }
+    .imdb-section {
+      .imdb-text-count {
+        color: var(--yellow);
+        font-weight: 700;
+      }
+      .ua{
+        font-size:18px;
+        font-weight:500;
+      }
+    }
   }
 }
