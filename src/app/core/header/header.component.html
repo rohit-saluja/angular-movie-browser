@@ -1,16 +1,20 @@
 <div class="d-flex p-2 main-header-container">
   <div class="navigation-links p-1 d-flex align-items-center">
-    <img src="/assets/images/logo.png" />
+    <img
+      src="/assets/images/logo.png"
+      [routerLink]="['']"
+      class="cursor-pointer"
+    />
     <div
-      class="navigation-link active text-uppercase"
+      class="navigation-link active text-uppercase cursor-pointer"
       [routerLink]="['']"
       [routerLinkActive]="['active']"
     >
       home
     </div>
-    <div class="navigation-link text-uppercase">tv show</div>
-    <div class="navigation-link text-uppercase">movies</div>
-    <div class="navigation-link text-uppercase">new</div>
+    <div class="navigation-link text-uppercase cursor-pointer">tv show</div>
+    <div class="navigation-link text-uppercase cursor-pointer">movies</div>
+    <div class="navigation-link text-uppercase cursor-pointer">new</div>
   </div>
   <div class="navigation-search p1 d-flex ms-auto align-items-center gap-2">
     <div
@@ -19,8 +23,8 @@
       <input type="text" placeholder="SEARCH" />
       <span class="material-icons-outlined"> search </span>
     </div>
-    <span class="material-icons-outlined"> redeem </span>
-    <span class="material-icons-outlined"> notifications </span>
-    <span class="material-icons-outlined"> person </span>
+    <span class="material-icons-outlined cursor-pointer"> redeem </span>
+    <span class="material-icons-outlined cursor-pointer"> notifications </span>
+    <span class="material-icons-outlined cursor-pointer"> person </span>
   </div>
 </div>
