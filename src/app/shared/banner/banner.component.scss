@@ -17,6 +17,7 @@
       color: var(--genere-red);
     }
     .buttons-section {
+      font-weight: 800;
       .button-watch {
         background-color: var(--dark-purple);
       }
@@ -32,6 +33,7 @@
       .ua {
         font-size: 18px;
         font-weight: 500;
+        padding: 0 5px;
       }
       .year {
         font-size: 20px;
