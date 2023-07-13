@@ -8,6 +8,6 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 @NgModule({
   declarations: [HeaderComponent, SideNavComponent, MovieCardComponent],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, SideNavComponent],
+  exports: [HeaderComponent, SideNavComponent, MovieCardComponent],
 })
 export class CoreModule {}
