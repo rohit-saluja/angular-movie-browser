@@ -1,4 +1,4 @@
-const getUser = function (res, req) {
+const getUser = function (req, res) {
   res.send("hi");
 };
 
