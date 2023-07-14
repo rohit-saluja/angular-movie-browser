@@ -16,9 +16,6 @@ const { value: envVars, error } = envVarsSchema.validate(process.env);
 if (error) {
   throw new Error("config validation error " + error.message);
 }
-
-console.log(error);
-console.log(value);
 module.exports = {
   env: envVars.NODE_ENV,
   mongoose: {
