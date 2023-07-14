@@ -21,4 +21,5 @@ module.exports = {
   mongoose: {
     url: envVars.MONGODB_URL,
   },
+  port: envVars.PORT,
 };
