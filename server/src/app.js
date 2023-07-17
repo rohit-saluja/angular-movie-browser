@@ -8,10 +8,9 @@ const httpStatus = require("http-status");
 const config = require("./configs/config");
 const morgan = require("./configs/morgan");
 const routes = require("./routes/v1");
-
+const { errorConverter, errorHandler } = require("./middlewares/error");
 
 const app = express();
-
 if (config.env !== "test") {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
@@ -29,4 +28,9 @@ app.use(cors());
 app.options("*", cors());
 
 app.use("/v1", routes);
+
+app.use(errorConverter);
+
+app.use(errorHandler);
+
 module.exports = app;
