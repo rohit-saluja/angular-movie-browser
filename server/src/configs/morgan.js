@@ -1,8 +1,8 @@
-const morgan = require("morgan");
-const config = require("./config");
-const logger = require("./logger.js");
-const getIpFormat = () =>
-  config.env === "production" ? ":remote-addr - " : "";
+const morgan = require('morgan');
+const config = require('./config');
+const logger = require('./logger.js');
+
+const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '');
 const successResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms`;
 const errorResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms - messsage: :message`;
 const successHandler = morgan(successResponseFormat, {

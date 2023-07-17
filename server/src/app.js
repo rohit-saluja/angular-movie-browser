@@ -1,17 +1,14 @@
-const express = require("express");
-const helmet = require("helmet");
-const mongoSanitize = require("express-mongo-sanitize");
-const compression = require("compression");
-const cors = require("cors");
-const passport = require("passport");
-const httpStatus = require("http-status");
-const config = require("./configs/config");
-const morgan = require("./configs/morgan");
-const routes = require("./routes/v1");
-const { errorConverter, errorHandler } = require("./middlewares/error");
+const express = require('express');
+const helmet = require('helmet');
+const compression = require('compression');
+const cors = require('cors');
+const config = require('./configs/config');
+const morgan = require('./configs/morgan');
+const routes = require('./routes/v1');
+const { errorConverter, errorHandler } = require('./middlewares/error');
 
 const app = express();
-if (config.env !== "test") {
+if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
@@ -25,9 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use(cors());
-app.options("*", cors());
+app.options('*', cors());
 
-app.use("/v1", routes);
+app.use('/v1', routes);
 
 app.use(errorConverter);
 
