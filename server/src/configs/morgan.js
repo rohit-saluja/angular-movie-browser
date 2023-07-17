@@ -1,6 +1,6 @@
 const morgan = require('morgan');
 const config = require('./config');
-const logger = require('./logger.js');
+const logger = require('./logger');
 
 const getIpFormat = () => (config.env === 'production' ? ':remote-addr - ' : '');
 const successResponseFormat = `${getIpFormat()}:method :url :status - :response-time ms`;
