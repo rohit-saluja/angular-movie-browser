@@ -9,6 +9,15 @@ const envVarsSchema = joi
     NODE_ENV: joi.string().valid('development', 'production').required(),
     PORT: joi.number().default(3000),
     MONGODB_URL: joi.string().required().description('Mongo db url'),
+    JWT_SECRET: joi.string().required().description('jwt secret token'),
+    JWT_ACCESS_EXPIRATION_MINUTES: joi.string().required().description('jwt access expiration time in minutes'),
+    JWT_REFRESH_EXPIRATION_DAYS: joi.number().default(30).description('days after which refresh tokens expires'),
+    JWT_VERIFY_EMAIL_EXPIRATION_MINUTES: joi.number().default(30).description('minutes after which email expires'),
+    SMTP_HOST: joi.string().description('host address for email'),
+    SMTP_PORT: joi.string().description('smtp port'),
+    SMTP_USERNAME: joi.string().optional().allow('').description('smtp port'),
+    SMTP_PASSWORD: joi.string().optional().allow('').description('password for smtp server'),
+    EMAIL_FROM: joi.string(),
   })
   .unknown();
 
