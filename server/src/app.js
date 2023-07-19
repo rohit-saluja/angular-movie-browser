@@ -27,7 +27,6 @@ app.options('*', cors());
 app.use('/v1', routes);
 
 app.use(errorConverter);
-
 app.use(errorHandler);
 
 module.exports = app;
