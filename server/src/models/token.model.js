@@ -35,6 +35,6 @@ const tokenSchema = mongoose.Schema(
 
 tokenSchema.plugin(toJson);
 
-const Token = mongoose.Model('Token', tokenSchema);
+const Token = mongoose.model('Token', tokenSchema);
 
 module.exports = Token;

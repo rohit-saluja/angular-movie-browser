@@ -49,6 +49,7 @@ const userSchema = mongoose.Schema(
   },
 );
 userSchema.plugin(toJson);
+
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
   return !!user;
