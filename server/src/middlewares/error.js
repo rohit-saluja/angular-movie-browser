@@ -11,17 +11,17 @@ const errorConverter = (err, req, res, next) => {
       error.statusCode || error instanceof mongoose.Error ? httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
     const message = error.message || httpStatus[statusCode];
     error = new ApiError(statusCode, message, false, err.stack);
-    next(error);
   }
+  next(error);
 };
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
+  console.log(err, 'error handler');
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
-
   const response = {
     code: statusCode,
     message,
