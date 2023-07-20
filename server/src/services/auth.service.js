@@ -25,7 +25,7 @@ const refreshAuth = async (refreshToken) => {
     const refreshTokenDoc = await tokenService.verifyToken(refreshToken, tokenTypes.REFRESH);
     const user = await userService.getUserById(refreshTokenDoc.user);
     if (!user) {
-      throw new Error();
+      throw new Error('User is not found');
     }
     await refreshTokenDoc.deleteOne();
     return tokenService.generateAuthTokens(user);
