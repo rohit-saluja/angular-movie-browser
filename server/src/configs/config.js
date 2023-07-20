@@ -18,6 +18,7 @@ const envVarsSchema = joi
     SMTP_PORT: joi.string().description('smtp port'),
     SMTP_USERNAME: joi.string().optional().allow('').description('smtp port'),
     SMTP_PASSWORD: joi.string().optional().allow('').description('password for smtp server'),
+    SMTP_KEY: joi.string().required().description('password for smtp server'),
     EMAIL_FROM: joi.string(),
   })
   .unknown();
@@ -49,6 +50,7 @@ module.exports = {
         pass: envVars.SMTP_PASSWORD,
       },
     },
+    key: envVars.SMTP_KEY,
     from: envVars.EMAIL_FROM,
   },
 };
