@@ -25,9 +25,12 @@ const refreshTokens = catchAsync(async (req, res) => {
   res.send({ ...tokens });
 });
 
+const resetPassword = catchAsync(async (req, res) => {});
+
 module.exports = {
   register,
   login,
   logout,
   refreshTokens,
+  resetPassword,
 };
