@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { userService, tokenService } = require('./index');
+const { userService, tokenService, authService } = require('./index');
 const ApiError = require('../utils/ApiError');
 const { Token } = require('../models');
 const { tokenTypes } = require('../configs/tokens');
@@ -34,8 +34,23 @@ const refreshAuth = async (refreshToken) => {
   }
 };
 
+const resetPassword = async (token, newPassword) => {
+  try {
+    const tokenDoc = await tokenService.verifyToken(token, tokenTypes.RESET_PASSWORD);
+    const user = await authService.getUserById(tokenDoc.user);
+    if (!user) {
+      throw new Error();
+    }
+    await userService.updateUserById(user.id, { password: newPassword });
+    await Token.deleteMany({ user: user.id, type: tokenTypes.RESET_PASSWORD });
+  } catch (error) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unathorized access');
+  }
+};
+
 module.exports = {
   loginUserWithEmailAndPassword,
   logout,
   refreshAuth,
+  resetPassword,
 };
