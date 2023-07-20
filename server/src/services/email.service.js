@@ -30,7 +30,7 @@ const sendVerificationEmail = async (to, token) => {
   await sendMail(to, subject, text);
 };
 
-module.exorts = {
+module.exports = {
   sendMail,
   sendResetPasswordEmail,
   sendVerificationEmail,
