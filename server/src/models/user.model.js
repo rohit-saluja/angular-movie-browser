@@ -48,6 +48,7 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   },
 );
+
 userSchema.plugin(toJson);
 
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
