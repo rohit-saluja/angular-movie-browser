@@ -64,10 +64,20 @@ const generateVerifyEmailToken = async (user) => {
   return verifyEmailToken;
 };
 
+const verifyToken = async (token, type) => {
+  const payload = jwt.verify(token, config.jwt.secret);
+  const tokenDoc = await Token.findOne({ token, type, blacklisted: false, user: payload.sub });
+  if (!tokenDoc) {
+    throw new Error('Token is not found');
+  }
+  return tokenDoc;
+};
+
 module.exports = {
   saveToken,
   generateToken,
   generateAuthTokens,
   generateResetPasswordToken,
   generateVerifyEmailToken,
+  verifyToken,
 };
