@@ -39,11 +39,12 @@ const resetPassword = async (token, newPassword) => {
     const tokenDoc = await tokenService.verifyToken(token, tokenTypes.RESET_PASSWORD);
     const user = await authService.getUserById(tokenDoc.user);
     if (!user) {
-      throw new Error();
+      throw new Error('user is not found');
     }
     await userService.updateUserById(user.id, { password: newPassword });
     await Token.deleteMany({ user: user.id, type: tokenTypes.RESET_PASSWORD });
   } catch (error) {
+    console.log(error);
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Unathorized access');
   }
 };
