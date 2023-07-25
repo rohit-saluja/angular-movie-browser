@@ -1,7 +1,8 @@
 const { User } = require('../models');
 
 const getUsers = async (req, res) => {
-  const users = User.find({ role: 'user' });
+  const users = await User.find({ role: 'user' });
+
   res.send(users);
 };
 
