@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { confirmPasswordValidator } from './confirm-password.validator';
 
 @Component({
   selector: 'app-signup',
@@ -14,11 +15,18 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.signUpForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', Validators.required],
+    this.signUpForm = this.fb.group(
+      {
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: confirmPasswordValidator }
+    );
+
+    this.signUpForm.valueChanges.subscribe(() => {
+      console.log(this.signUpForm.errors);
     });
   }
 

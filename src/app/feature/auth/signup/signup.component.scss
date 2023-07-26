@@ -31,4 +31,12 @@
 .mat-mdc-button.mat-primary {
   background: #0b2f8a;
   color: #ffffff;
+  &:disabled {
+    cursor: not-allowed;
+    background: grey;
+    pointer-events: all;
+  }
+}
+.confirm-password-error {
+  margin-top: -20px;
 }
