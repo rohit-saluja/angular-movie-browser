@@ -24,11 +24,9 @@ export class SignupComponent implements OnInit {
       },
       { validators: confirmPasswordValidator }
     );
-
-    this.signUpForm.valueChanges.subscribe(() => {
-      console.log(this.signUpForm.errors);
-    });
   }
+
+  signup(): void {}
 
   get name() {
     return this.signUpForm.get('name');
