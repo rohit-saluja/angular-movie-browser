@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerfyEmailComponent } from './verfy-email/verfy-email.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-
+import { MaterialModule } from 'src/app/material/material.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     ForgotPasswordComponent,
     VerfyEmailComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule
-  ]
+  imports: [CommonModule, AuthRoutingModule, MaterialModule],
 })
-export class AuthModule { }
+export class AuthModule {}

@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div
+  class="signup-container d-flex align-items-center justify-content-center p-5 h-100"
+>
+  <form class="w-100">
+    <div class="signup-section rounded-3 d-flex w-100 overflow-hidden">
+      <div
+        class="get-started bg-white p-4 d-flex flex-column align-items-center"
+      >
+        <div class="get-started-header p-3 mb-5">Get Started</div>
+        <mat-form-field class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="Sushi" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            [type]="showPassword ? 'text' : 'password'"
+          />
+          <mat-icon
+            class="material-icons"
+            role="button"
+            (click)="showPassword = !showPassword"
+            matSuffix
+            >{{ showPassword ? "visibility_off" : "visibility" }}</mat-icon
+          >
+        </mat-form-field>
+      </div>
+      <div class="background-image w-50 d-none d-lg-block"></div>
+    </div>
+  </form>
+</div>
