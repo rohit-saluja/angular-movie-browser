@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from './confirm-password.validator';
+import { AuthService } from 'src/app/app/feature/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   showConfirmPassword: boolean = false;
   signUpForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
@@ -26,7 +27,9 @@ export class SignupComponent implements OnInit {
     );
   }
 
-  signup(): void {}
+  signup(): void {
+    this.authService.signup(this.signUpForm.value).subscribe();
+  }
 
   get name() {
     return this.signUpForm.get('name');
