@@ -59,7 +59,14 @@ export class AuthService {
       token.refresh.token
     );
   }
-  
+
+  public forgotPassword(data: { email: string }): Observable<null> {
+    return this.httpClient.post<null>(
+      `${environment}/auth/forgot-password`,
+      data
+    );
+  }
+
   get userObject(): User {
     return this.user.value;
   }
