@@ -97,6 +97,10 @@ export class AuthService {
     );
   }
 
+  public isLoggedIn(): boolean {
+    return !!this.user.value;
+  }
+
   get userObject(): User {
     return this.user.value;
   }
