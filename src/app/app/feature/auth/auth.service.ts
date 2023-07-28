@@ -54,10 +54,16 @@ export class AuthService {
 
   public logout(): Observable<null> {
     const token: Token = JSON.parse(localStorage.getItem('token') || '');
-    return this.httpClient.post<null>(
-      `${environment.baseUrl}/auth/logout`,
-      token.refresh.token
-    );
+    return this.httpClient
+      .post<null>(`${environment.baseUrl}/auth/logout`, token.refresh.token)
+      .pipe(
+        map((res) => {
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+          this.user.next({});
+          return res;
+        })
+      );
   }
 
   public forgotPassword(data: { email: string }): Observable<null> {
