@@ -67,6 +67,16 @@ export class AuthService {
     );
   }
 
+  public resetPassword(data: {
+    password: string;
+    token: string;
+  }): Observable<null> {
+    return this.httpClient.post<null>(
+      `${environment.baseUrl}/auth/reset-password`,
+      data
+    );
+  }
+
   get userObject(): User {
     return this.user.value;
   }
