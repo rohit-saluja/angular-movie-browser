@@ -52,6 +52,14 @@ export class AuthService {
       );
   }
 
+  public logout(): Observable<null> {
+    const token: Token = JSON.parse(localStorage.getItem('token') || '');
+    return this.httpClient.post<null>(
+      `${environment.baseUrl}/auth/logout`,
+      token.refresh.token
+    );
+  }
+  
   get userObject(): User {
     return this.user.value;
   }
