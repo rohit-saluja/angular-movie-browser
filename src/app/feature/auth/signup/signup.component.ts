@@ -4,6 +4,7 @@ import { confirmPasswordValidator } from './confirm-password.validator';
 import { AuthService } from 'src/app/app/feature/auth/auth.service';
 import { User } from '../user.model';
 import { Token } from '../token.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,11 @@ export class SignupComponent implements OnInit {
   showConfirmPassword: boolean = false;
   signUpForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
@@ -30,9 +35,11 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void {
-    this.authService.signup(this.signUpForm.value).subscribe((res:{ userDoc: User; tokens: Token })=>{
-`     `
-    });
+    this.authService
+      .signup(this.signUpForm.value)
+      .subscribe((res: { userDoc: User; tokens: Token }) => {
+        this.router.navigate(['']);
+      });
   }
 
   get name() {
