@@ -77,6 +77,13 @@ export class AuthService {
     );
   }
 
+  public sendVerificationEmail(): Observable<null> {
+    return this.httpClient.post<null>(
+      `${environment}/auth/send-verification-email`,
+      {}
+    );
+  }
+
   get userObject(): User {
     return this.user.value;
   }
