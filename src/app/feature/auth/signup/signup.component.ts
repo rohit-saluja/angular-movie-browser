@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from './confirm-password.validator';
 import { AuthService } from 'src/app/app/feature/auth/auth.service';
+import { User } from '../user.model';
+import { Token } from '../token.model';
 
 @Component({
   selector: 'app-signup',
@@ -28,7 +30,9 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void {
-    this.authService.signup(this.signUpForm.value).subscribe();
+    this.authService.signup(this.signUpForm.value).subscribe((res:{ userDoc: User; tokens: Token })=>{
+`     `
+    });
   }
 
   get name() {
