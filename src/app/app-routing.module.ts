@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './feature/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
       import('./feature/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule
       ),
+    canLoad: [AuthGuard],
   },
   {
     path: 'auth',
