@@ -17,7 +17,7 @@ export class AuthService {
 
   public user$ = this.user.asObservable();
 
-  signup(data: User): Observable<{ userDoc: User; tokens: Token }> {
+  public signup(data: User): Observable<{ userDoc: User; tokens: Token }> {
     return this.httpClient
       .post<{ userDoc: User; tokens: Token }>(
         `${environment.baseUrl}/auth/register`,
@@ -26,7 +26,27 @@ export class AuthService {
       .pipe(
         map((res: { userDoc: User; tokens: Token }) => {
           localStorage.setItem('user', JSON.stringify(res.userDoc));
+          localStorage.setItem('token', JSON.stringify(res.tokens));
           this.user.next(res.userDoc);
+          return res;
+        })
+      );
+  }
+
+  public login(data: {
+    email: string;
+    password: string;
+  }): Observable<{ user: User; tokens: Token }> {
+    return this.httpClient
+      .post<{ user: User; tokens: Token }>(
+        `${environment.baseUrl}/auth/login`,
+        data
+      )
+      .pipe(
+        map((res: { user: User; tokens: Token }) => {
+          localStorage.setItem('user', JSON.stringify(res.user));
+          localStorage.setItem('token', JSON.stringify(res.tokens));
+          this.user.next(res.user);
           return res;
         })
       );
