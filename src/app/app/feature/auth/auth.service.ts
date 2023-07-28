@@ -84,6 +84,13 @@ export class AuthService {
     );
   }
 
+  public verifyEmail(data: { token: string }): Observable<null> {
+    return this.httpClient.post<null>(
+      `${environment.baseUrl}/auth/verify-email`,
+      data
+    );
+  }
+
   get userObject(): User {
     return this.user.value;
   }
