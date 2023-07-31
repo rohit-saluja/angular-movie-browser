@@ -9,7 +9,7 @@ const routes: Routes = [
       import('./feature/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule
       ),
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
   },
   {
     path: 'auth',

@@ -12,7 +12,9 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   private user: BehaviorSubject<User> = new BehaviorSubject<User>(
-    JSON.parse(localStorage.getItem('user') || '')
+    localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user') || '')
+      : ''
   );
 
   public user$ = this.user.asObservable();
