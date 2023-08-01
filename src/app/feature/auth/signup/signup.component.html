@@ -74,7 +74,12 @@
           *ngIf="signUpForm?.errors?.['passwordNotMatch'] && confirmPassword?.value"
           >Confirm Password is not matched with password</mat-error
         >
-        <button mat-button color="primary" [disabled]="signUpForm.invalid">
+        <button
+          mat-button
+          color="primary"
+          [disabled]="signUpForm.invalid"
+          (click)="signup()"
+        >
           Sign up
         </button>
       </div>
