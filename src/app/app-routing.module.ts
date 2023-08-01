@@ -4,17 +4,17 @@ import { AuthGuard } from './feature/auth/auth.guard';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./feature/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: '',
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./feature/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule
       ),
-    // canLoad: [AuthGuard],
-  },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./feature/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

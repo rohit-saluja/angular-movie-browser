@@ -9,7 +9,8 @@ export class AuthGuard implements CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree {
     if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['auth/login']);
+      this.router.navigate(['/auth/login']);
+      return false;
     }
     return this.authService.isLoggedIn();
   }
