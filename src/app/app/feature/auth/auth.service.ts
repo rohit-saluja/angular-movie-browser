@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Token } from 'src/app/feature/auth/token.model';
 import { User } from 'src/app/feature/auth/user.model';
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   private user: BehaviorSubject<User> = new BehaviorSubject<User>(
     localStorage.getItem('user')
@@ -57,12 +58,15 @@ export class AuthService {
   public logout(): Observable<null> {
     const token: Token = JSON.parse(localStorage.getItem('token') || '');
     return this.httpClient
-      .post<null>(`${environment.baseUrl}/auth/logout`, token.refresh.token)
+      .post<null>(`${environment.baseUrl}/auth/logout`, {
+        refreshToken: token.refresh.token,
+      })
       .pipe(
         map((res) => {
           localStorage.removeItem('user');
           localStorage.removeItem('token');
           this.user.next({});
+          this.router.navigate(['auth', 'login']);
           return res;
         })
       );
