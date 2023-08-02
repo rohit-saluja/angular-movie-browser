@@ -30,5 +30,24 @@
         }
       }
     }
+    .user-profile-popup {
+      width: 300px;
+      z-index: 1;
+      top: 57px;
+      padding: 10px;
+      border-radius: 10px;
+      left: 36px;
+      background: linear-gradient(
+        156deg,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(65, 26, 180, 0.75) 100%
+      );
+      box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+      .user-welcome {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
   }
 }

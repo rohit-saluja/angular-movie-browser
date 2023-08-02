@@ -24,7 +24,9 @@
       new
     </div>
   </div>
-  <div class="navigation-search p1 d-flex ms-auto align-items-center gap-2">
+  <div
+    class="navigation-search p1 d-flex ms-auto align-items-center gap-2 position-relative"
+  >
     <div
       class="search-input d-flex align-items-center rounded-pill justify-content-center px-2 py-1"
     >
@@ -37,8 +39,21 @@
     <span class="material-icons-outlined cursor-pointer" role="button">
       notifications
     </span>
-    <span class="material-icons-outlined cursor-pointer" role="button">
+    <span
+      class="material-icons-outlined cursor-pointer"
+      role="button"
+      (click)="showUserProfilePopup = !showUserProfilePopup"
+    >
       person
     </span>
+    <div
+      class="position-absolute user-profile-popup"
+      *ngIf="showUserProfilePopup"
+    >
+      <span class="user-welcome">Welcome, {{ user.name }}</span>
+      <div class="d-flex justify-content-end">
+        <button mat-button color="warn" (click)="logout()">Logout</button>
+      </div>
+    </div>
   </div>
 </div>
