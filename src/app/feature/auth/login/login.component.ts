@@ -31,7 +31,9 @@ export class LoginComponent {
   }
 
   login(): void {
-    this.authService.login(this.loginForm.value).subscribe(() => {});
+    this.authService.login(this.loginForm.value).subscribe(() => {
+      this.router.navigate(['']);
+    });
   }
 
   get email() {
