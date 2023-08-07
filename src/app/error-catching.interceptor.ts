@@ -7,10 +7,11 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { SnakbarService } from './services/snakbar.service';
 
 @Injectable()
 export class ErrorCatchingInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private snakBarService: SnakbarService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -22,7 +23,8 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           console.log(error);
         } else {
-          errorMessage = error.message;
+          errorMessage = error.error.message;
+          this.snakBarService.openSnakeBar(errorMessage);
         }
         return throwError(error);
       })
