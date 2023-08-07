@@ -46,9 +46,20 @@
           color="primary"
           [disabled]="loginForm.invalid"
           (click)="login()"
+          class="mb-3"
         >
           Login
         </button>
+        <div class="not-having-account d-flex">
+          <span>Not having an account?</span>
+          <a
+            href="javascript:void(0)"
+            routerLink="/auth/signup"
+            class="text-decoration-none"
+          >
+            Signup</a
+          >
+        </div>
       </div>
       <div class="background-image w-50 d-none d-lg-block"></div>
     </div>

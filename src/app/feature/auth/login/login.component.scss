@@ -13,6 +13,16 @@
         font-size: 48px;
         font-weight: 800;
       }
+      .not-having-account {
+        font-size: 16px;
+        font-weight: 500;
+        span {
+          color: rgba(21, 24, 109, 0.6);
+        }
+        a {
+          color: #0b2f8a;
+        }
+      }
     }
   }
   .background-image {
