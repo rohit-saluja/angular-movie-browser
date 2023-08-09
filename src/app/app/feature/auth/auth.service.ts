@@ -74,7 +74,7 @@ export class AuthService {
 
   public forgotPassword(data: { email: string }): Observable<null> {
     return this.httpClient.post<null>(
-      `${environment}/auth/forgot-password`,
+      `${environment.baseUrl}/auth/forgot-password`,
       data
     );
   }
