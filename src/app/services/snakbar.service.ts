@@ -10,7 +10,7 @@ import {
 })
 export class SnakbarService {
   public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  public verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  public verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(private snakeBar: MatSnackBar) {}
 

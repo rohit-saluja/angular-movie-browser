@@ -20,6 +20,7 @@ const envVarsSchema = joi
     SMTP_PASSWORD: joi.string().optional().allow('').description('password for smtp server'),
     SMTP_KEY: joi.string().required().description('password for smtp server'),
     EMAIL_FROM: joi.string(),
+    FRONT_END_BASE_URL: joi.string(),
   })
   .unknown();
 
@@ -53,4 +54,5 @@ module.exports = {
     key: envVars.SMTP_KEY,
     from: envVars.EMAIL_FROM,
   },
+  front_end_base_url: envVars.FRONT_END_BASE_URL,
 };
