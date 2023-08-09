@@ -11,6 +11,7 @@ import { SnakbarService } from 'src/app/services/snakbar.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup = new FormGroup({});
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -26,9 +27,11 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   sendEmail(): void {
+    this.isLoading = true;
     this.authService
       .forgotPassword(this.forgotPasswordForm.value)
       .subscribe(() => {
+        this.isLoading = false;
         this.router.navigate(['/auth/login']);
         this.snakeBarService.openSnakeBar(
           'An email is send to this email please, check your spam folder'
