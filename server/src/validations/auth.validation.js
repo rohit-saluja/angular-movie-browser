@@ -30,7 +30,7 @@ const refreshToken = {
 
 const resetPassword = {
   body: Joi.object().keys({
-    password: Joi.string().required(),
+    password: Joi.string().min(8).required(),
     token: Joi.string().required(),
   }),
 };
