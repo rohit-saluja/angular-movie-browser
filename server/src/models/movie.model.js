@@ -23,6 +23,11 @@ const movieSchema = mongoose.Schema({
     type: String,
   },
   subtitles: [{ type: String }],
+  category: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Category',
+    required: true,
+  },
 });
 
 const Movie = movieSchema.model('Movie', movieSchema);

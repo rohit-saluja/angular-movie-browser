@@ -43,6 +43,7 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    movies: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Movie' }],
   },
   {
     timestamps: true,
