@@ -28,6 +28,12 @@ const movieSchema = mongoose.Schema({
     ref: 'Category',
     required: true,
   },
+  bannerImage: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
 });
 
 const Movie = movieSchema.model('Movie', movieSchema);
