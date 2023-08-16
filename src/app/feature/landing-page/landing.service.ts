@@ -1,0 +1,15 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Movie } from './movie.model';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class LandingService {
+  constructor(private httpClient: HttpClient) {}
+
+  public getMovies(): Observable<Movie> {
+    return this.httpClient.get<Movie>(`/`);
+  }
+}
