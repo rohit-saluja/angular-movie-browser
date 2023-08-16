@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./configs/config');
 const logger = require('./configs/logger');
+const checkAndInsert = require('./inser-data');
 
 let server;
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
@@ -10,6 +11,8 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
     logger.info(`Listening to the port ${config.port}`);
   });
 });
+
+checkAndInsert();
 
 const exitHandler = () => {
   if (server) {

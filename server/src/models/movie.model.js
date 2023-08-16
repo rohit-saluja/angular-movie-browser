@@ -26,7 +26,6 @@ const movieSchema = mongoose.Schema({
   category: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'Category',
-    required: true,
   },
   bannerImage: {
     type: String,
@@ -36,6 +35,6 @@ const movieSchema = mongoose.Schema({
   },
 });
 
-const Movie = movieSchema.model('Movie', movieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
