@@ -7,21 +7,29 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Token } from './feature/auth/token.model';
+import * as moment from 'moment';
+import { AuthService } from './app/feature/auth/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token: Token = JSON.parse(localStorage.getItem('token') || '');
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    if (localStorage.getItem('token')) {
+      const token: Token = JSON.parse(localStorage.getItem('token') || '');
+      if (moment(token.access.expires).isSameOrBefore(moment())) {
+        // this.authService.logout().subscribe();
+      }
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token.access.token}`,
+        },
+      });
+    }
+
     return next.handle(request);
   }
 }

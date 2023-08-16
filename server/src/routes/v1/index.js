@@ -1,6 +1,7 @@
 const app = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
+const movieRoute = require('./movie.route');
 
 const router = app.Router();
 
@@ -9,6 +10,10 @@ const defaultRoutes = [
   {
     path: '/user',
     route: userRoute,
+  },
+  {
+    path: '/movies',
+    route: movieRoute,
   },
 ];
 

@@ -3,6 +3,9 @@
     movies you must watch
   </div>
   <div class="slider d-flex">
-    <app-movie-card></app-movie-card>
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+    ></app-movie-card>
   </div>
 </div>

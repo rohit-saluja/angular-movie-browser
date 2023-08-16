@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorCatchingInterceptor } from './error-catching.interceptor';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,11 @@ import { ErrorCatchingInterceptor } from './error-catching.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorCatchingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],

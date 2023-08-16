@@ -1,11 +1,11 @@
 <div class="slide-item d-flex flex-column gap-1" role="button">
-  <img src="assets/images/movie.png" />
-  <div class="movie-title text-white">Kumbalangi Nights</div>
-  <div class="year">2018</div>
+  <img src="assets/images/{{ movie.image }}" />
+  <div class="movie-title text-white">{{ movie.name }}</div>
+  <div class="year">{{ movie.year }}</div>
   <div class="d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center gap-1">
       <img src="assets/images/imdb-small-icon.png" />
-      <div class="rating">8.6</div>
+      <div class="rating">{{ movie.rating }}</div>
     </div>
     <div class="d-flex align-items-center gap-1 me-2">
       <img src="assets/images/eye.png" />
