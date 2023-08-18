@@ -1,7 +1,8 @@
 const { Category } = require('../models');
 
 const getCategories = async (req, res) => {
-  const categories = await Category.find();
+  let categories = await Category.find();
+  categories = categories.map((c) => c.name);
   res.send(categories);
 };
 

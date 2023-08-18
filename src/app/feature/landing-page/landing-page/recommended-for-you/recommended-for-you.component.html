@@ -3,13 +3,9 @@
   <div class="d-flex flex-wrap categories mb-3">
     <div
       class="rounded-pill px-4 py-2 text-white categories-pill d-flex align-items-center"
+      *ngFor="let category of categories"
     >
-      Hindi
-    </div>
-    <div
-      class="rounded-pill px-4 py-2 text-white categories-pill d-flex align-items-center"
-    >
-      Bengali
+      {{ category }}
     </div>
   </div>
   <div class="slider d-flex">
