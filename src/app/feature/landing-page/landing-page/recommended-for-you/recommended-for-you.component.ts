@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../../movie.model';
 import { LandingService } from '../../landing.service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-recommended-for-you',
@@ -28,6 +29,17 @@ export class RecommendedForYouComponent implements OnInit {
         this.categories.push(this.fb.group({ name: c, value: false }))
       );
     });
+    this.categories.valueChanges
+      .pipe(
+        switchMap((categories) =>
+          this.landingService.searchMovies(
+            categories
+              .filter((category: { value: boolean }) => category.value)
+              .map((category: { name: string }) => category.name)
+          )
+        )
+      )
+      .subscribe((res: Movie[]) => (this.movies = res));
   }
 
   get categories(): FormArray {

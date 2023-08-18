@@ -17,4 +17,11 @@ export class LandingService {
   public getCategories(): Observable<string[]> {
     return this.httpClient.get<string[]>(`${environment.baseUrl}/categories`);
   }
+
+  public searchMovies(categories: string[]): Observable<Movie[]> {
+    return this.httpClient.post<Movie[]>(
+      `${environment.baseUrl}/categories/search`,
+      categories
+    );
+  }
 }

@@ -5,5 +5,6 @@ const { movieController } = require('../../controllers');
 const router = express.Router();
 
 router.get('', auth(), movieController.getMovies);
+router.get('search', auth(), movieController.searchMovies);
 
 module.exports = router;
