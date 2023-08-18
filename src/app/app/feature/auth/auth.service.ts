@@ -108,6 +108,7 @@ export class AuthService {
     if (localStorage.getItem('token')) {
       const token: Token = JSON.parse(localStorage.getItem('token') || '');
       if (moment(token.access.expires).isSameOrBefore(moment())) {
+        localStorage.clear();
         return false;
       } else {
         return true;

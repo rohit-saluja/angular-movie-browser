@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../../movie.model';
 import { LandingService } from '../../landing.service';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-recommended-for-you',
@@ -9,14 +10,27 @@ import { LandingService } from '../../landing.service';
 })
 export class RecommendedForYouComponent implements OnInit {
   @Input() movies: Movie[] = [];
-  categories: string[] = [];
+  categoriesList: string[] = [];
+  recommendedForm: FormGroup = new FormGroup({});
 
-  constructor(private landingService: LandingService) {}
+  constructor(
+    private landingService: LandingService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.landingService
-      .getCategories()
-      .subscribe((res: string[]) => (this.categories = res));
+    this.recommendedForm = this.fb.group({
+      categories: this.fb.array([]),
+    });
+    this.landingService.getCategories().subscribe((res: string[]) => {
+      this.categoriesList = res;
+      this.categoriesList.map((c) =>
+        this.categories.push(this.fb.group({ name: c, value: false }))
+      );
+    });
   }
-  
+
+  get categories(): FormArray {
+    return this.recommendedForm.get('categories') as FormArray;
+  }
 }
