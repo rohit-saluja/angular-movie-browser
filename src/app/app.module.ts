@@ -9,9 +9,10 @@ import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorCatchingInterceptor } from './error-catching.interceptor';
 import { AuthInterceptor } from './auth.interceptor';
+import { RecommendedForYouComponent } from './app/feature/landing-page/landing-page/recommended-for-you/recommended-for-you.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RecommendedForYouComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

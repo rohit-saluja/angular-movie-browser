@@ -1,0 +1,15 @@
+.must-watch-container {
+  .heading {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .categories {
+    gap: 15px;
+    .categories-pill {
+      &.active {
+        background-color: #e43109;
+      }
+      background-color: #5c5c5c;
+    }
+  }
+}
