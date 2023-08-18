@@ -17,5 +17,4 @@ const searchMovies = async (req, res) => {
   res.send(movies);
 };
 
-
 module.exports = { getMovies, searchMovies };
