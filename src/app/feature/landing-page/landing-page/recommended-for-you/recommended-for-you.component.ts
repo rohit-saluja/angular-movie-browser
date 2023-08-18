@@ -8,4 +8,5 @@ import { Movie } from '../../movie.model';
 })
 export class RecommendedForYouComponent {
   @Input() movies: Movie[] = [];
+  
 }
