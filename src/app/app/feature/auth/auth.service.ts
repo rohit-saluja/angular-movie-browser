@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Token } from 'src/app/feature/auth/token.model';
 import { User } from 'src/app/feature/auth/user.model';
@@ -104,7 +105,16 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    return !!this.user.value;
+    if (localStorage.getItem('token')) {
+      const token: Token = JSON.parse(localStorage.getItem('token') || '');
+      if (moment(token.access.expires).isSameOrBefore(moment())) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
   }
 
   get userObject(): User {

@@ -20,9 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     if (localStorage.getItem('token')) {
       const token: Token = JSON.parse(localStorage.getItem('token') || '');
-      if (moment(token.access.expires).isSameOrBefore(moment())) {
-        // this.authService.logout().subscribe();
-      }
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token.access.token}`,
