@@ -20,8 +20,8 @@ export class LandingService {
 
   public searchMovies(categories: string[]): Observable<Movie[]> {
     return this.httpClient.post<Movie[]>(
-      `${environment.baseUrl}/categories/search`,
-      categories
+      `${environment.baseUrl}/movies/search`,
+      { categories }
     );
   }
 }

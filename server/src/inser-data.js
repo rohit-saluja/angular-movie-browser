@@ -7,9 +7,8 @@ const inserDataOnLoad = () => {
   categories.forEach(async (category) => {
     await Category.create({ name: category });
   });
-
   movies.forEach(async (movie) => {
-    const category = await Category.find({ name_lower: movie.name });
+    const category = await Category.findOne({ name: { $in: movie.subtitles } });
     if (category) {
       await Movie.create({ category: category._id, ...movie });
     } else {
