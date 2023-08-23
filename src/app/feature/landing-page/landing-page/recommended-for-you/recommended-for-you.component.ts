@@ -1,7 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../../movie.model';
 import { LandingService } from '../../landing.service';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -29,17 +35,17 @@ export class RecommendedForYouComponent implements OnInit {
         this.categories.push(this.fb.group({ name: c, value: false }))
       );
     });
-    this.categories.valueChanges
-      .pipe(
-        switchMap((categories) =>
-          this.landingService.searchMovies(
-            categories
-              .filter((category: { value: boolean }) => category.value)
-              .map((category: { name: string }) => category.name)
-          )
-        )
+  }
+
+  selectItem(category: AbstractControl): void {
+    category.patchValue({ value: !category.value.value });
+    this.landingService
+      .searchMovies(
+        this.categories.value
+          .filter((category: { value: boolean }) => category.value)
+          .map((category: { name: string }) => category.name)
       )
-      .subscribe((res: Movie[]) => (this.movies = res));
+      .subscribe((res) => (this.movies = res));
   }
 
   get categories(): FormArray {

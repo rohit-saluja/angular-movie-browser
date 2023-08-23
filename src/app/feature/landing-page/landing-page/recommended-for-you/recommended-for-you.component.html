@@ -1,12 +1,14 @@
 <div class="must-watch-container mb-4">
-  <div class="heading text-uppercase text-white mb-3">recommended for you</div>
+  <div class="heading text-uppercase text-white mb-3">
+    movies you must watch
+  </div>
   <form [formGroup]="recommendedForm">
     <div class="d-flex flex-wrap categories mb-3">
       <ng-container formArrayName="categories">
         <div
           class="rounded-pill px-4 py-2 text-white categories-pill d-flex align-items-center"
           *ngFor="let category of categories.controls; let index = index"
-          (click)="category.patchValue({ value: !category.value.value })"
+          (click)="selectItem(category)"
           [formGroupName]="index"
           role="button"
           [class.active]="category.value.value"
