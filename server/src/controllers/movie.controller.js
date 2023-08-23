@@ -10,6 +10,7 @@ const searchMovies = async (req, res) => {
   if (!categories.length) {
     const movies = await Movie.find({});
     res.send(movies);
+    return;
   }
   const categoriesDoc = await Category.find({ name: { $in: categories } });
   const categoriesIds = categoriesDoc.map((c) => c._id);
