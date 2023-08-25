@@ -8,9 +8,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MustWatchComponent } from './landing-page/must-watch/must-watch.component';
 import { RecommendedForYouComponent } from './landing-page/recommended-for-you/recommended-for-you.component';
 import { BollywoodClassicsComponent } from './landing-page/bollywood-classics/bollywood-classics.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
-  declarations: [LandingPageComponent, MustWatchComponent, RecommendedForYouComponent, BollywoodClassicsComponent],
+  declarations: [LandingPageComponent, MustWatchComponent, RecommendedForYouComponent, BollywoodClassicsComponent, MovieDetailComponent],
   imports: [CommonModule, LandingPageRoutingModule, CoreModule, SharedModule],
 })
 export class LandingPageModule {}

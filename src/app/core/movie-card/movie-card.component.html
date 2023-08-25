@@ -1,4 +1,8 @@
-<div class="slide-item d-flex flex-column gap-1" role="button">
+<div
+  class="slide-item d-flex flex-column gap-1"
+  role="button"
+  [routerLink]="['/movie-detail', movie._id]"
+>
   <img src="assets/images/{{ movie.image }}" />
   <div class="movie-title text-white" *ngIf="(movie?.name)!.length > 20">
     {{ movie.name | slice : 0 : 20 }}...
