@@ -33,6 +33,10 @@ const movieSchema = mongoose.Schema({
   image: {
     type: String,
   },
+  isBanner: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Movie = mongoose.model('Movie', movieSchema);

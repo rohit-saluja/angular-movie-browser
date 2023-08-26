@@ -183,6 +183,19 @@ const movies = [
     subtitles: ['Hindi', 'Bengali', 'Tamil'],
     image: 'my-name.png',
   },
+  {
+    name: 'The Dark Knight',
+    year: 2008,
+    rating: 8.3,
+    description:
+      'The Dark Knight is a 2008 superhero film directed by Christopher Nola from a screenplay he co-wrote with his brother Jonathan. Based on the DC Comics',
+    generes: ['Thriller', 'Drama'],
+    audio: 'english',
+    subtitles: ['Hindi', 'Bengali', 'Tamil', 'English'],
+    image: '',
+    isBanner: true,
+    bannerImage: 'banner.jpg',
+  },
 ];
 
 module.exports = movies;
