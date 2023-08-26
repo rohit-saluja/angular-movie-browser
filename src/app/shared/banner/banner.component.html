@@ -1,6 +1,7 @@
 <div class="banner-container overflow-hidden w-100 position-relative">
   <img
-    src="assets/images/banner.jpg"
+    *ngIf="movie.bannerImage"
+    src="assets/images/{{ movie.bannerImage }}"
     class="w-100 object-fit-fill position-absolute"
   />
   <div class="banner-content position-absolute">
@@ -8,7 +9,7 @@
     <div class="content-text-area mb-3">
       {{ movie.description }}
     </div>
-    <div class="genere mb-3">
+    <div class="genere mb-3" *ngIf="movie.generes!.length">
       <div class="genere-heading text-uppercase">generes</div>
       <div class="genere-label text-white">{{ movie.generes!.join(", ") }}</div>
     </div>
@@ -29,12 +30,22 @@
         <span class="material-symbols-outlined"> add </span>
       </span>
     </div>
-    <div class="imdb-section d-flex gap-3 align-items-center">
+    <div class="imdb-section d-flex gap-3 align-items-center mb-3">
       <img src="assets/images/imdb-large-icon.png" />
       <span class="imdb-text-count">{{ movie.rating }}</span>
       <div class="ua rounded border border-white text-white">U/A</div>
       <div class="ua rounded border border-white text-white">4K</div>
       <div class="year">{{ movie.rating }}</div>
+    </div>
+    <div class="genere mb-3" *ngIf="movie.audio">
+      <div class="genere-heading text-uppercase">Audio</div>
+      <div class="genere-label text-white">{{ movie.audio | titlecase }}</div>
+    </div>
+    <div class="genere mb-3" *ngIf="movie.subtitles!.length">
+      <div class="genere-heading text-uppercase">Subtitles</div>
+      <div class="genere-label text-white">
+        {{ movie.subtitles!.join(", ") }}
+      </div>
     </div>
   </div>
 </div>
