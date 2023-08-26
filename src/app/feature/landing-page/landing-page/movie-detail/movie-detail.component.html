@@ -1,4 +1,8 @@
 <app-banner [movie]="movie"></app-banner>
 <div class="movies-list-container px-2 py-4">
-  <app-recommended-for-you [movies]="relatedMovies"></app-recommended-for-you>
+  <app-recommended-for-you
+    [movies]="relatedMovies"
+    [header]="'more like this'"
+    [showCategoriesFilter]="false"
+  ></app-recommended-for-you>
 </div>

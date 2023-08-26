@@ -5,10 +5,8 @@ import {
   AbstractControl,
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
 } from '@angular/forms';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-recommended-for-you',
@@ -17,6 +15,8 @@ import { switchMap } from 'rxjs';
 })
 export class RecommendedForYouComponent implements OnInit {
   @Input() movies: Movie[] = [];
+  @Input() showCategoriesFilter: boolean = true;
+  @Input() header: string = 'movies you must watch';
   categoriesList: string[] = [];
   recommendedForm: FormGroup = new FormGroup({});
 
@@ -26,15 +26,17 @@ export class RecommendedForYouComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.recommendedForm = this.fb.group({
-      categories: this.fb.array([]),
-    });
-    this.landingService.getCategories().subscribe((res: string[]) => {
-      this.categoriesList = res;
-      this.categoriesList.map((c) =>
-        this.categories.push(this.fb.group({ name: c, value: false }))
-      );
-    });
+    if (this.showCategoriesFilter) {
+      this.recommendedForm = this.fb.group({
+        categories: this.fb.array([]),
+      });
+      this.landingService.getCategories().subscribe((res: string[]) => {
+        this.categoriesList = res;
+        this.categoriesList.map((c) =>
+          this.categories.push(this.fb.group({ name: c, value: false }))
+        );
+      });
+    }
   }
 
   selectItem(category: AbstractControl): void {
