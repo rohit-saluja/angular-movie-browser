@@ -9,11 +9,16 @@ import { LandingService } from '../../landing.service';
 })
 export class HomePageComponent {
   movies: Movie[] = [];
+  bannerMovie: Movie = {};
+
   constructor(private landingService: LandingService) {}
-  
+
   ngOnInit(): void {
     this.landingService.getMovies().subscribe((res) => {
       this.movies = res;
     });
+    this.landingService
+      .getBannerImage()
+      .subscribe((res) => (this.bannerMovie = res));
   }
 }

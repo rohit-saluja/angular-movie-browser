@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as moment from 'moment';
+import { Movie } from 'src/app/feature/landing-page/movie.model';
 
 @Component({
   selector: 'app-banner',
@@ -7,5 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent {
+  @Input() movie: Movie = {};
+
   moment = moment;
 }

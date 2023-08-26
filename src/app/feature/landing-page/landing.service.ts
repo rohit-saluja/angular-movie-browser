@@ -30,4 +30,10 @@ export class LandingService {
       `${environment.baseUrl}/movies/${movieId}`
     );
   }
+
+  public getBannerImage(): Observable<Movie> {
+    return this.httpClient.get<Movie>(
+      `${environment.baseUrl}/movies/banner-image`
+    );
+  }
 }

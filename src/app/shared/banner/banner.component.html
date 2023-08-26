@@ -4,15 +4,13 @@
     class="w-100 object-fit-fill position-absolute"
   />
   <div class="banner-content position-absolute">
-    <div class="header-title mb-3">The Dark Knight</div>
+    <div class="header-title mb-3">{{ movie.name }}</div>
     <div class="content-text-area mb-3">
-      The Dark Knight is a 2008 superhero film directed by Christopher Nolan
-      from a screenplay he co-wrote with his brother Jonathan. Based on the DC
-      Comics
+      {{ movie.description }}
     </div>
     <div class="genere mb-3">
       <div class="genere-heading text-uppercase">generes</div>
-      <div class="genere-label text-white">Romance, Drama</div>
+      <div class="genere-label text-white">{{ movie.generes!.join(", ") }}</div>
     </div>
     <div class="buttons-section d-flex gap-3 mb-3">
       <span
@@ -23,6 +21,7 @@
         <span class="material-icons"> play_arrow </span>
       </span>
       <span
+        *ngIf="false"
         class="d-flex align-items-center justify-content-center px-3 py-2 rounded-pill text-white button-mylist text-uppercase gap-2"
         role="button"
       >
@@ -32,10 +31,10 @@
     </div>
     <div class="imdb-section d-flex gap-3 align-items-center">
       <img src="assets/images/imdb-large-icon.png" />
-      <span class="imdb-text-count">8.3</span>
+      <span class="imdb-text-count">{{ movie.rating }}</span>
       <div class="ua rounded border border-white text-white">U/A</div>
       <div class="ua rounded border border-white text-white">4K</div>
-      <div class="year">{{ moment().year() }}</div>
+      <div class="year">{{ movie.rating }}</div>
     </div>
   </div>
 </div>
