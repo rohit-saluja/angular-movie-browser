@@ -9,7 +9,10 @@
     <div class="content-text-area mb-3">
       {{ movie.description }}
     </div>
-    <div class="genere mb-3" *ngIf="movie.generes!.length">
+    <div
+      class="genere mb-3"
+      *ngIf="movie && movie?.generes && (movie?.generes)!.length"
+    >
       <div class="genere-heading text-uppercase">generes</div>
       <div class="genere-label text-white">{{ movie.generes!.join(", ") }}</div>
     </div>
@@ -41,7 +44,10 @@
       <div class="genere-heading text-uppercase">Audio</div>
       <div class="genere-label text-white">{{ movie.audio | titlecase }}</div>
     </div>
-    <div class="genere mb-3" *ngIf="movie.subtitles!.length">
+    <div
+      class="genere mb-3"
+      *ngIf="movie?.subtitles && movie.subtitles!.length"
+    >
       <div class="genere-heading text-uppercase">Subtitles</div>
       <div class="genere-label text-white">
         {{ movie.subtitles!.join(", ") }}
