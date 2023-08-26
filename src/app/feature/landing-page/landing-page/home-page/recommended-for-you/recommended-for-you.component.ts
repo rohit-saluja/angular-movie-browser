@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../movie.model';
-import { LandingService } from '../../landing.service';
+import { Movie } from '../../../movie.model';
+import { LandingService } from '../../../landing.service';
 import {
   AbstractControl,
   FormArray,
