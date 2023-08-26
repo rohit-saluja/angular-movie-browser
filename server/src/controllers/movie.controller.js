@@ -1,3 +1,4 @@
+const httpStatus = require('http-status');
 const { Movie, Category } = require('../models');
 
 const getMovies = async (req, res) => {
@@ -18,4 +19,13 @@ const searchMovies = async (req, res) => {
   res.send(movies);
 };
 
-module.exports = { getMovies, searchMovies };
+const getMovieDetail = async (req, res) => {
+  const { movieId } = req.params;
+  const movie = await Movie.findOne(movieId);
+  if (!movie) {
+    res.status(httpStatus.NOT_FOUND).sent();
+  }
+  res.send(movie);
+};
+
+module.exports = { getMovies, searchMovies, getMovieDetail };
