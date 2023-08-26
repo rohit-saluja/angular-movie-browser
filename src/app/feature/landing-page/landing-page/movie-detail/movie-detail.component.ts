@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LandingService } from '../../landing.service';
 import { Movie } from '../../movie.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-movie-detail',
@@ -18,8 +19,12 @@ export class MovieDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.landingService
-      .getMovieDetail(this.route.snapshot.params['movieId'])
+    this.route.paramMap
+      .pipe(
+        switchMap((param: ParamMap) =>
+          this.landingService.getMovieDetail(param.get('movieId') as string)
+        )
+      )
       .subscribe((res: { movie: Movie; relatedMovies: Movie[] }) => {
         this.movie = res.movie;
         this.relatedMovies = res.relatedMovies;
