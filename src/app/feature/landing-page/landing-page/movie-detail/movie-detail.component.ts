@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieDetailComponent implements OnInit {
   public movie: Movie = {};
+  public relatedMovies: Movie[] = [];
 
   constructor(
     private landingService: LandingService,
@@ -19,6 +20,9 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.landingService
       .getMovieDetail(this.route.snapshot.params['movieId'])
-      .subscribe((res: Movie) => (this.movie = res));
+      .subscribe((res: { movie: Movie; relatedMovies: Movie[] }) => {
+        this.movie = res.movie;
+        this.relatedMovies = res.relatedMovies;
+      });
   }
 }
