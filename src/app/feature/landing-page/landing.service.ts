@@ -24,4 +24,10 @@ export class LandingService {
       { categories }
     );
   }
+
+  public getMovieDetail(movieId: string): Observable<Movie> {
+    return this.httpClient.get<Movie>(
+      `${environment.baseUrl}/movies/${movieId}`
+    );
+  }
 }

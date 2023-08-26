@@ -21,7 +21,7 @@ const searchMovies = async (req, res) => {
 
 const getMovieDetail = async (req, res) => {
   const { movieId } = req.params;
-  const movie = await Movie.findOne(movieId);
+  const movie = await Movie.findOne({ _id: movieId });
   if (!movie) {
     res.status(httpStatus.NOT_FOUND).sent();
   }
