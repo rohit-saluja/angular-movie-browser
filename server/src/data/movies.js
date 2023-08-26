@@ -170,7 +170,7 @@ const movies = [
     generes: ['Romance', 'Comedy'],
     audio: 'hindi',
     subtitles: ['Hindi', 'Bengali', 'Tamil'],
-    image: 'dil-walemy.png',
+    image: 'dil-wale.png',
   },
   {
     name: 'My name is khan',

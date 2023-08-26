@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const { Movie, Category } = require('../models');
 
 const getMovies = async (req, res) => {
-  const movies = await Movie.find();
+  const movies = await Movie.find({ isBanner: false });
   return res.send(movies);
 };
 
