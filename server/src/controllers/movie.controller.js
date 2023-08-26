@@ -26,7 +26,7 @@ const getMovieDetail = async (req, res) => {
     res.status(httpStatus.NOT_FOUND).sent();
   }
   const { generes } = movie;
-  const relatedMovies = await Movie.find({ generes: { $in: generes } });
+  const relatedMovies = await Movie.find({ generes: { $in: generes }, isBanner: false });
   res.send({ movie, relatedMovies });
 };
 
