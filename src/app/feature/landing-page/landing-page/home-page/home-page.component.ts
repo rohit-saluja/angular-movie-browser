@@ -10,6 +10,7 @@ import { LandingService } from '../../landing.service';
 export class HomePageComponent {
   movies: Movie[] = [];
   constructor(private landingService: LandingService) {}
+  
   ngOnInit(): void {
     this.landingService.getMovies().subscribe((res) => {
       this.movies = res;

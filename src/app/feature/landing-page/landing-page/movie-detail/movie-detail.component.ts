@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LandingService } from '../landing.service';
-import { Movie } from '../movie.model';
+import { LandingService } from '../../landing.service';
+import { Movie } from '../../movie.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
