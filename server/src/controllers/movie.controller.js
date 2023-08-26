@@ -35,4 +35,8 @@ const getBanner = async (req, res) => {
   res.send(movie);
 };
 
+// const searchMoviesFromInputText = async(req,res)=>{
+//   const {searchText} = req.body;
+
+// }
 module.exports = { getMovies, searchMovies, getMovieDetail, getBanner };
