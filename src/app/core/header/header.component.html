@@ -42,7 +42,7 @@
         (keyup.arrowup)="
           currentIndex > 0 ? (currentIndex = currentIndex - 1) : ''
         "
-        (keyup.enter)="currentIndex = currentIndex - 1"
+        (keyup.enter)="enter()"
       />
       <span class="material-icons-outlined"> search </span>
       <div
@@ -54,6 +54,7 @@
           class="auto-suggestion-element p-2 text-white"
           *ngFor="let movie of movies; let index = index"
           [class.hovered-state]="currentIndex == index"
+          (click)="autoSuggestionClicked(index)"
         >
           {{ movie.name }}
         </div>

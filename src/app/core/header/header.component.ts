@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   EMPTY,
   debounceTime,
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private landingService: LandingService
+    private landingService: LandingService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
         map((value) => {
           if (!value) {
             this.movies = [];
+            this.currentIndex = -1;
           }
           return value;
         }),
@@ -50,6 +53,20 @@ export class HeaderComponent implements OnInit {
       .subscribe((res: Movie[]) => {
         this.movies = res;
       });
+  }
+
+  enter(): void {
+    this.movieInput.setValue(this.movies[this.currentIndex].name as string);
+    this.router.navigate(['/movie-detail', this.movies[this.currentIndex]._id]);
+    this.currentIndex = -1;
+    this.movies = [];
+  }
+
+  autoSuggestionClicked(index: number): void {
+    this.movieInput.setValue(this.movies[index].name as string);
+    this.router.navigate(['/movie-detail', this.movies[this.currentIndex]._id]);
+    this.currentIndex = -1;
+    this.movies = [];
   }
 
   logout(): void {
