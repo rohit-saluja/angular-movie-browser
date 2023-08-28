@@ -5,7 +5,7 @@
   <img
     *ngIf="movie.name"
     src="assets/images/{{ movie.bannerImage }}"
-    class="w-100 object-fit-fill position-absolute"
+    class="w-100 object-fit-fill position-absolute d-none d-xl-block"
   />
   <div class="banner-content position-absolute" *ngIf="movie.name">
     <div class="header-title mb-3">{{ movie.name }}</div>
