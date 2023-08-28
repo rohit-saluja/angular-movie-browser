@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   showUserProfilePopup: boolean = false;
   movies: Movie[] = [];
   movieInput = new FormControl('');
+  currentIndex = -1;
 
   constructor(
     private authService: AuthService,

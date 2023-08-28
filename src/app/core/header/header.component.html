@@ -30,7 +30,20 @@
     <div
       class="search-input d-flex align-items-center rounded-pill justify-content-center px-2 py-1 position-relative"
     >
-      <input type="text" placeholder="SEARCH" [formControl]="movieInput" />
+      <input
+        type="text"
+        placeholder="SEARCH"
+        [formControl]="movieInput"
+        (keyup.arrowdown)="
+          currentIndex < movies.length - 1
+            ? (currentIndex = currentIndex + 1)
+            : ''
+        "
+        (keyup.arrowup)="
+          currentIndex > 0 ? (currentIndex = currentIndex - 1) : ''
+        "
+        (keyup.enter)="currentIndex = currentIndex - 1"
+      />
       <span class="material-icons-outlined"> search </span>
       <div
         class="auto-suggestion w-100 rounded-2 border border-primary position-absolute"
@@ -39,7 +52,8 @@
       >
         <div
           class="auto-suggestion-element p-2 text-white"
-          *ngFor="let movie of movies"
+          *ngFor="let movie of movies; let index = index"
+          [class.hovered-state]="currentIndex == index"
         >
           {{ movie.name }}
         </div>
