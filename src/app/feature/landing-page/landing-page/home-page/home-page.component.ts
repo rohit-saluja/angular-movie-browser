@@ -24,7 +24,7 @@ export class HomePageComponent {
 
     this.landingService
       .getBannerImage()
-      .pipe(delay(1000))
-      .subscribe((res) => (this.bannerMovie = {}));
+      .pipe(delay(500))
+      .subscribe((res) => (this.bannerMovie = res));
   }
 }

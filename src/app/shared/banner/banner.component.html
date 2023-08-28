@@ -1,13 +1,13 @@
 <div
   class="banner-container overflow-hidden w-100 position-relative"
-  *ngIf="movie.bannerImage"
+  *ngIf="movie.name"
 >
   <img
-    *ngIf="movie.bannerImage"
+    *ngIf="movie.name"
     src="assets/images/{{ movie.bannerImage }}"
     class="w-100 object-fit-fill position-absolute"
   />
-  <div class="banner-content position-absolute" *ngIf="movie.bannerImage">
+  <div class="banner-content position-absolute" *ngIf="movie.name">
     <div class="header-title mb-3">{{ movie.name }}</div>
     <div class="content-text-area mb-3">
       {{ movie.description }}
@@ -58,4 +58,4 @@
     </div>
   </div>
 </div>
-<app-banner-placeholder *ngIf="!movie.bannerImage"></app-banner-placeholder>
+<app-banner-placeholder *ngIf="!movie.name"></app-banner-placeholder>
