@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from '../../movie.model';
 import { LandingService } from '../../landing.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -14,9 +15,12 @@ export class HomePageComponent {
   constructor(private landingService: LandingService) {}
 
   ngOnInit(): void {
-    this.landingService.getMovies().subscribe((res) => {
-      this.movies = res;
-    });
+    this.landingService
+      .getMovies()
+      .pipe(delay(2000))
+      .subscribe((res) => {
+        this.movies = res;
+      });
     this.landingService
       .getBannerImage()
       .subscribe((res) => (this.bannerMovie = res));

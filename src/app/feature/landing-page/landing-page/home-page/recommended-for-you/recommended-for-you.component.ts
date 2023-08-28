@@ -7,6 +7,7 @@ import {
   FormBuilder,
   FormGroup,
 } from '@angular/forms';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-recommended-for-you',
@@ -47,6 +48,7 @@ export class RecommendedForYouComponent implements OnInit {
           .filter((category: { value: boolean }) => category.value)
           .map((category: { name: string }) => category.name)
       )
+      .pipe(delay(2000))
       .subscribe((res) => (this.movies = res));
   }
 
