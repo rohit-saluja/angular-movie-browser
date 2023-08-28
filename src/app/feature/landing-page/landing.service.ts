@@ -38,4 +38,11 @@ export class LandingService {
       `${environment.baseUrl}/movies/banner-image`
     );
   }
+
+  public searchMoviesFromInputText(searchText: string): Observable<Movie[]> {
+    return this.httpClient.post<Movie[]>(
+      `${environment.baseUrl}/movies/search-movies`,
+      { searchText }
+    );
+  }
 }

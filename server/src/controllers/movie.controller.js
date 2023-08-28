@@ -35,8 +35,10 @@ const getBanner = async (req, res) => {
   res.send(movie);
 };
 
-// const searchMoviesFromInputText = async(req,res)=>{
-//   const {searchText} = req.body;
+const searchMoviesFromInputText = async (req, res) => {
+  const { searchText } = req.body;
+  const movies = await Movie.find({ name: { $regex: `/${searchText}/`, $options: 'i' } });
+  res.send(movies);
+};
 
-// }
-module.exports = { getMovies, searchMovies, getMovieDetail, getBanner };
+module.exports = { getMovies, searchMovies, getMovieDetail, getBanner, searchMoviesFromInputText };
