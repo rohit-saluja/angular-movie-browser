@@ -21,8 +21,10 @@ export class HomePageComponent {
       .subscribe((res) => {
         this.movies = res;
       });
+
     this.landingService
       .getBannerImage()
+      .pipe(delay(1000))
       .subscribe((res) => (this.bannerMovie = res));
   }
 }

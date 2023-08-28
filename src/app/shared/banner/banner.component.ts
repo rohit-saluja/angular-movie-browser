@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Movie } from 'src/app/feature/landing-page/movie.model';
 
@@ -7,8 +7,9 @@ import { Movie } from 'src/app/feature/landing-page/movie.model';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
   @Input() movie: Movie = {};
-
   moment = moment;
+
+  ngOnInit(): void {}
 }
