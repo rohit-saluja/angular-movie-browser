@@ -56,14 +56,18 @@ export class HeaderComponent implements OnInit {
   }
 
   enter(): void {
-    this.movieInput.setValue(this.movies[this.currentIndex].name as string);
+    this.movieInput.setValue(this.movies[this.currentIndex].name as string, {
+      emitEvent: false,
+    });
     this.router.navigate(['/movie-detail', this.movies[this.currentIndex]._id]);
     this.currentIndex = -1;
     this.movies = [];
   }
 
   autoSuggestionClicked(index: number): void {
-    this.movieInput.setValue(this.movies[index].name as string);
+    this.movieInput.setValue(this.movies[index].name as string, {
+      emitEvent: false,
+    });
     this.router.navigate(['/movie-detail', this.movies[this.currentIndex]._id]);
     this.currentIndex = -1;
     this.movies = [];
