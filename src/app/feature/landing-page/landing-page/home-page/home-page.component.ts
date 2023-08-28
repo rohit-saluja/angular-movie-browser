@@ -17,7 +17,7 @@ export class HomePageComponent {
   ngOnInit(): void {
     this.landingService
       .getMovies()
-      .pipe(delay(2000))
+      .pipe(delay(1000))
       .subscribe((res) => {
         this.movies = res;
       });

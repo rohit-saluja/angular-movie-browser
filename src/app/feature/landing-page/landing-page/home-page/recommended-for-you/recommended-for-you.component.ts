@@ -41,6 +41,7 @@ export class RecommendedForYouComponent implements OnInit {
   }
 
   selectItem(category: AbstractControl): void {
+    this.movies = [];
     category.patchValue({ value: !category.value.value });
     this.landingService
       .searchMovies(
@@ -48,7 +49,7 @@ export class RecommendedForYouComponent implements OnInit {
           .filter((category: { value: boolean }) => category.value)
           .map((category: { name: string }) => category.name)
       )
-      .pipe(delay(2000))
+      .pipe(delay(1000))
       .subscribe((res) => (this.movies = res));
   }
 
