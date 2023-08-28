@@ -1,0 +1,16 @@
+.banner-placeholder {
+  height: 500px;
+  h1,
+  p {
+    width: 400px;
+    &.description {
+      width: 400px;
+    }
+    &.generes {
+      width: 50px;
+    }
+    &.ratings {
+      width: 200px;
+    }
+  }
+}
