@@ -32,7 +32,9 @@ export class HeaderComponent implements OnInit {
           this.landingService.searchMoviesFromInputText(value as string)
         )
       )
-      .subscribe((res: Movie[]) => (this.movies = res));
+      .subscribe((res: Movie[]) => {
+        this.movies = res;
+      });
   }
 
   logout(): void {

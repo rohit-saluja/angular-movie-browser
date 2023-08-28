@@ -37,7 +37,7 @@ const getBanner = async (req, res) => {
 
 const searchMoviesFromInputText = async (req, res) => {
   const { searchText } = req.body;
-  const movies = await Movie.find({ name: { $regex: `/${searchText}/`, $options: 'i' } });
+  const movies = await Movie.find({ name: { $regex: `${searchText}`, $options: 'i' } });
   res.send(movies);
 };
 
