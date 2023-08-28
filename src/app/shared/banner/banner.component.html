@@ -1,6 +1,6 @@
 <div
   class="banner-container overflow-hidden w-100 position-relative"
-  *ngIf="movie"
+  *ngIf="movie.bannerImage"
 >
   <img
     *ngIf="movie.bannerImage"
@@ -58,3 +58,4 @@
     </div>
   </div>
 </div>
+<app-banner-placeholder *ngIf="!movie.bannerImage"></app-banner-placeholder>
