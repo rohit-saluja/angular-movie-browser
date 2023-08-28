@@ -28,10 +28,22 @@
     class="navigation-search p1 d-flex ms-auto align-items-center gap-2 position-relative"
   >
     <div
-      class="search-input d-flex align-items-center rounded-pill justify-content-center px-2 py-1"
+      class="search-input d-flex align-items-center rounded-pill justify-content-center px-2 py-1 position-relative"
     >
       <input type="text" placeholder="SEARCH" [formControl]="movieInput" />
       <span class="material-icons-outlined"> search </span>
+      <div
+        class="auto-suggestion w-100 rounded-2 border border-primary position-absolute"
+        *ngIf="movies?.length"
+        role="button"
+      >
+        <div
+          class="auto-suggestion-element p-2 text-white"
+          *ngFor="let movie of movies"
+        >
+          {{ movie.name }}
+        </div>
+      </div>
     </div>
     <span class="material-icons-outlined cursor-pointer" role="button">
       redeem

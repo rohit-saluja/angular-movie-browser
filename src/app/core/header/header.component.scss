@@ -29,6 +29,16 @@
           color: #a2b3cd;
         }
       }
+      .auto-suggestion {
+        top: 39px;
+        z-index: 1;
+        background: rgba(65, 26, 180, 0.75);
+        .auto-suggestion-element {
+          &:hover {
+            background: rgb(24 19 41 / 75%);
+          }
+        }
+      }
     }
     .user-profile-popup {
       width: 300px;
