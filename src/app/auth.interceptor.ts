@@ -7,7 +7,6 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Token } from './feature/auth/token.model';
-import * as moment from 'moment';
 import { AuthService } from './app/feature/auth/auth.service';
 
 @Injectable()
