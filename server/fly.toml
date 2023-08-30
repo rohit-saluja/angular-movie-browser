@@ -1,13 +1,12 @@
-# fly.toml app configuration file generated for dry-feather-2254 on 2023-07-11T10:36:11+05:30
+# fly.toml app configuration file generated for restless-resonance-7956 on 2023-08-30T15:48:43+05:30
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "dry-feather-2254"
+app = "restless-resonance-7956"
 primary_region = "ams"
 
-[env]
-  PORT = "8080"
+[build]
 
 [http_service]
   internal_port = 8080
