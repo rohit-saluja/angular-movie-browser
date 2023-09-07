@@ -8,7 +8,7 @@ if (config.env !== 'test') {
   transport
     .verify()
     .then(() => logger.info('connected to email server'))
-    .catch(() => logger.warn('Unable to connect to email'));
+    .catch((error) => logger.warn(`Unable to connect to email ${error}`));
 }
 
 const sendMail = async (to, subject, text) => {
