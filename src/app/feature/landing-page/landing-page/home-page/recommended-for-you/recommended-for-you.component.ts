@@ -49,7 +49,7 @@ export class RecommendedForYouComponent implements OnInit {
           .filter((category: { value: boolean }) => category.value)
           .map((category: { name: string }) => category.name)
       )
-      .pipe(delay(1000))
+      .pipe(delay(500))
       .subscribe((res) => (this.movies = res));
   }
 
