@@ -18,7 +18,10 @@
       </ng-container>
     </div>
   </form>
-  <div class="slider d-flex flex-wrap" *ngIf="movies?.length">
+  <div
+    class="slider d-flex flex-wrap justify-content-center justify-content-md-start"
+    *ngIf="movies?.length"
+  >
     <app-movie-card
       *ngFor="let movie of movies"
       [movie]="movie"
