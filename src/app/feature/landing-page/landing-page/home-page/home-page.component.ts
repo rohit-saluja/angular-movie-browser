@@ -15,16 +15,12 @@ export class HomePageComponent {
   constructor(private landingService: LandingService) {}
 
   ngOnInit(): void {
-    this.landingService
-      .getMovies()
-      .pipe(delay(500))
-      .subscribe((res) => {
-        this.movies = res;
-      });
+    this.landingService.getMovies().subscribe((res) => {
+      this.movies = res;
+    });
 
     this.landingService
       .getBannerImage()
-      .pipe(delay(500))
       .subscribe((res) => (this.bannerMovie = res));
   }
 }

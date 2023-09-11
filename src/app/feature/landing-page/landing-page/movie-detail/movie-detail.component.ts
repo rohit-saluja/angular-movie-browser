@@ -24,9 +24,9 @@ export class MovieDetailComponent implements OnInit {
         switchMap((param: ParamMap) => {
           this.movie = {};
           this.relatedMovies = [];
-          return this.landingService
-            .getMovieDetail(param.get('movieId') as string)
-            .pipe(delay(500));
+          return this.landingService.getMovieDetail(
+            param.get('movieId') as string
+          );
         })
       )
       .subscribe((res: { movie: Movie; relatedMovies: Movie[] }) => {
