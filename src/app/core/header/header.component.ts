@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit {
     this.movieInput.setValue(this.movies[index].name as string, {
       emitEvent: false,
     });
-    this.router.navigate(['/movie-detail', this.movies[this.currentIndex]._id]);
+    this.router.navigate(['/movie-detail', this.movies[index]._id]);
     this.currentIndex = -1;
     this.movies = [];
   }
